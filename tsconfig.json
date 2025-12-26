@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": ["ES2022"],
+
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+
+    /* 👇 baseUrl & path aliases */
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    "rootDir": "src",
+    "outDir": "dist",
+    "sourceMap": true,
+    "removeComments": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
