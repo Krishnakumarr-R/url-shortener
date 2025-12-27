@@ -6,6 +6,7 @@ import register from '@/controller/auth/register';
 
 import vaidationError from '@/middleware/validationError';
 import expressRateLimit from '@/lib/expressRateLimits';
+import User from '@/models/user';
 
 const router = Router();
 
@@ -17,7 +18,15 @@ router.post(
     .trim()
     .notEmpty()
     .withMessage('Invalid email address')
-    .custom(async (value) => {}),
+    .custom(async (value) => {
+      const userExists = await User.exists({
+        email: value,
+      }).exec();
+
+      if (userExists){
+        throw new Error('this email is already exists')
+      }
+    }),
   body('password')
     .trim()
     .notEmpty()
